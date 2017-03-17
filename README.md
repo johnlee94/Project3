@@ -1,6 +1,5 @@
 
-
-# Project 3
+# Project 3 - TEST
 
 **WDI-SM-43 Project 3 : Virtual Town Hall**
 
@@ -8,7 +7,7 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 **Presentation Deck:** https://docs.google.com/presentation/d/1V1WqcjMs_c-E9zHjgz9ZkVPYlm3Dg9Ska2o1C-YoEgA/edit?usp=sharing
 
-**Technologies Used:** 
+**Technologies Used:**
 
 - HTML / CSS / Javascript / EJS
 - 'MEN' Stack: Mongo.db, Express, Node.Js
@@ -51,7 +50,7 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
      ```$ nodemon```
 
-4.   To run the app locally, go to your browser of choice and port to http://localhost:3000 
+4.   To run the app locally, go to your browser of choice and port to http://localhost:3000
 
      For example: ```$ google-chrome http://localhost:3000```
 
@@ -94,5 +93,4 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 **Unsolved Problems / Major Problems:** (TBD)
 
-​	
-
+​
