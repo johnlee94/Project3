@@ -41,19 +41,19 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 2.   In your terminal run npm install to install all necessary dependency modules and packages
 
-             ​```$ npm install```  
+     ```$ npm install```  
 
 3.   Host the server locally by running in the command line:
 
-              ```$ node server.js```
+     ```$ node server.js```
 
-             Or run nodemon if you have the package installed in your Node version.
+     Or run nodemon if you have the package installed in your Node version.
 
-             ​```$ nodemon```
+     ```$ nodemon```
 
 4.   To run the app locally, go to your browser of choice and port to http://localhost:3000 
 
-             For example: ```$ google-chrome http://localhost:3000```
+     For example: ```$ google-chrome http://localhost:3000```
 
 
 
