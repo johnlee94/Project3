@@ -8,7 +8,7 @@ var User = require('../models/user')
 //   res.render('users/new')
 // }
 function index(req, res) {
-    res.render('/')
+    res.render('users/index')
   }
 
 function createUser (req, res) {
