@@ -20,3 +20,5 @@ User.methods.encrypt = function(password){
 };
 
 module.exports = User
+
+//test
