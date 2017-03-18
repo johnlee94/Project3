@@ -8,7 +8,7 @@ var express = require('express'),
     debug = require('debug'),
     app = express()
     mongoose = require('./config/database'),
-    routes = require('./config/routes')
+    routes = require('./config/routes/users')
 
 require('dotenv').config()
     // mongoose = require('mongoose') //path to DB?
@@ -22,7 +22,7 @@ app.locals.title = "Virtual Town Hall"
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(cookiePaser())
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
