@@ -1,5 +1,5 @@
 
-# Project 3 - TEST
+# Project 3
 
 **WDI-SM-43 Project 3 : Virtual Town Hall**
 
@@ -24,8 +24,7 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 - Divided up rolls based on interest
 - Created ERD
 - Developed wireframes/user experience
-
--Split into groups of 2 to CRUD the models as we all would like to be involved in the backend
+- Split into groups of 2 to CRUD the models as we all would like to be involved in the backend
 
 
 **Installation Instructions:**
