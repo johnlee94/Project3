@@ -40,7 +40,7 @@ function destroyUser (req, res) {
   User.remove ({_id: id}, function (err) {
     if (err) throw err
     res.json({message: 'User successfuly deleted!'})
-  }
+  })
 }
 
 
