@@ -20,6 +20,14 @@ function createUser (req, res) {
   })
 }
 
+function showUser(req, res) {
+  var id = req.params.id
+  user = User.findById(id, function(err, user){
+    if (err) throw err
+    res.json(user)
+  });
+}
+
 function updateUser(req, res) {
   var id = req.params.id
 
@@ -48,6 +56,7 @@ function destroyUser (req, res) {
 module.exports = {
   index: index,
   createUser: createUser,
-  destroyUser: destroyUser,
-  updateUser: updateUser
+  showUser: showUser,
+  updateUser: updateUser,
+  destroyUser: destroyUser
 }
