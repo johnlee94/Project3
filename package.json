@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/boonereynolds/Project3#readme",
   "dependencies": {
+    "bcrypt-nodejs": "latest",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
@@ -26,9 +27,16 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "express-ejs-layouts": "^1.1.0",
+    "express-session": "~1.0.0",
+    "method-override": "~1.0.0",
+    "connect-flash": "~0.1.1",
     "mongo": "^0.1.0",
     "mongoose": "^4.9.1",
     "morgan": "^1.8.1",
-    "serve-favicon": "^2.4.1"
+    "serve-favicon": "^2.4.1",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "passport-facebook": "~1.0.2"
   }
 }
