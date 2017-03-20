@@ -2,6 +2,10 @@ var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
+    passport = require('passport'),
+    flash = require('connect-flash'),
+    ejsLayouts = require('express-ejs-layouts'),
+    session = require('express-session'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser')
     bcrypt = require('bcrypt'),
@@ -24,6 +28,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+require('./config/passport')(passport);
+
+app.use(function (req, res, next){
+  global.user = req.user
+  next()
+})
 
 app.use('/', routes)
 
