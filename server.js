@@ -12,7 +12,8 @@ var express = require('express'),
     debug = require('debug'),
     app = express()
     mongoose = require('./config/database'),
-    routes = require('./config/routes/users')
+    userRoutes = require('./config/routes/users'),
+    repRoutes = require('./config/routes/reps')
 
 require('dotenv').config()
     // mongoose = require('mongoose') //path to DB?
@@ -29,6 +30,13 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+//For Local Auth
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
 require('./config/passport')(passport);
 
 app.use(function (req, res, next){
@@ -36,7 +44,10 @@ app.use(function (req, res, next){
   next()
 })
 
-app.use('/', routes)
+//root route add later!!
+// app.use('/', routes)
+app.use('/users', userRoutes)
+app.use('/reps', repRoutes)
 
 
 //404 and error handler

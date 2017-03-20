@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-var User = require('../../../models/users');
+var User = require('../models/user');
 
 module.exports = function(passport) {
 
@@ -22,7 +22,7 @@ module.exports = function(passport) {
     passwordField: 'password',
     state: 'state',
     zip: 'zip',
-    party: 'party'
+    party: 'party',
     passReqToCallback: true
   }, function (req, email, password, done) {
     process.nextTick(function() {

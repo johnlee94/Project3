@@ -1,5 +1,6 @@
 var User = require('../models/user'),
     passport = require('passport')
+    // flash = require('connect-flash')
 
 // function home(req, res) {
 //   // if current user, show current user
@@ -10,6 +11,11 @@ var User = require('../models/user'),
 // }
 function index(req, res) {
     res.render('users/index')
+}
+
+// GET /signup
+function getSignup(req, res) {
+  res.render('users/authentication/signup.ejs', {message: req.flash('signupMessage')})
 }
 
 function createUser(req, res) {
@@ -74,6 +80,7 @@ function destroyUser(req, res) {
 
 module.exports = {
     index: index,
+    getSignup: getSignup,
     createUser: createUser,
     destroyUser: destroyUser,
     updateUser: updateUser,
