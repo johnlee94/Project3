@@ -17,7 +17,7 @@ function updateRep(req, res) {
   var id = req.params.id
 
   Rep.findById(id, function(err, rep) {
-    if (err || !user) throw err
+    if (err || !rep) throw err
     //need to actually update inputs (based on form ejs)
     rep.completed = !rep.completed
     rep.save(function(err, updatedRep) {
@@ -36,6 +36,10 @@ function destroyRep (req, res) {
     res.json({message: 'Rep successfuly deleted!'})
   })
 }
+//
+// function showRep(req, res) {
+//   res.render('/:id')
+// }
 
 
 module.exports = {
@@ -44,3 +48,6 @@ module.exports = {
   destroyRep: destroyRep,
   updateRep: updateRep
 }
+
+
+//Test

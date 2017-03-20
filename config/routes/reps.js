@@ -1,16 +1,17 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createRep, destroyRep, updateRep} = require('../../controllers/reps')
+    {index, createRep, destroyRep, updateRep, showRep} = require('../../controllers/reps')
 
 
 
 router.route("/")//Our home
   .get(index)
 
-router.route("/reps")
+router.route("/")
   .post(createRep)
 
-router.route("/reps/:id")
+router.route("/:id")
+  // .show()
   .patch(updateRep)
   .delete(destroyRep)
 
