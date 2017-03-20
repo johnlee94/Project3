@@ -17,14 +17,14 @@ module.exports = function(passport) {
 
 
   passport.use('local-signup', new LocalStrategy({
-    username: 'username',
+    usernameField: 'username',
     emailField: 'email',
     passwordField: 'password',
-    state: 'state',
-    zip: 'zip',
-    party: 'party',
+    stateField: 'state',
+    zipField: 'zip',
+    partyField: 'party',
     passReqToCallback: true
-  }, function (req, email, password, done) {
+  }, function (req, username, email, password, state, zip, party, done) {
     process.nextTick(function() {
       // Find the user with email
       User.findOne({'local.email' : email}, function(err, user) {
@@ -36,8 +36,12 @@ module.exports = function(passport) {
         } else {
 
           var newUser = new User();
+          newUser.username = username;
           newUser.email = email;
           newUser.password = newUser.encrypt(password);
+          newUser.zip = zip;
+          newUser.state = state;
+          newUser.party = party;
 
           newUser.save(function(err) {
             if (err) throw err;

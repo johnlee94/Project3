@@ -20,7 +20,7 @@ function getSignup(req, res) {
 
 function createUser(req, res) {
     var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users',
+        successRedirect: '/users/signup',
         failureRedirect: '/users/signup',
         failureFlash: true
     })
