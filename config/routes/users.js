@@ -12,6 +12,7 @@ router.route("/")//Our home
 //   .post(createUser)
 
 router.route("/:id")
+  .get(showUser)
   .patch(updateUser)
   .delete(destroyUser)
 

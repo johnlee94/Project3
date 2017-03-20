@@ -79,11 +79,9 @@ function destroyUser(req, res) {
 
 
 module.exports = {
-    index: index,
-    getSignup: getSignup,
-    createUser: createUser,
-    destroyUser: destroyUser,
-    updateUser: updateUser,
-    getLogin: getLogin,
-    postLogin: postLogin
+  index: index,
+  createUser: createUser,
+  showUser: showUser,
+  updateUser: updateUser,
+  destroyUser: destroyUser
 }
