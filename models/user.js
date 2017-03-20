@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+var bcrypt = require('bcrypt')
 
 var userSchema = new mongoose.Schema({
   username: {type: String, required: true},
@@ -19,9 +20,9 @@ var userSchema = new mongoose.Schema({
 
 var User = mongoose.model('User', userSchema)
 
-// User.methods.encrypt = function(password){
-//   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
+User.methods.encrypt = function(password){
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
 module.exports = User
 
