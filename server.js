@@ -2,6 +2,10 @@ var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
+    passport = require('passport'),
+    flash = require('connect-flash'),
+    ejsLayouts = require('express-ejs-layouts'),
+    session = require('express-session'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser')
     bcrypt = require('bcrypt'),
@@ -26,8 +30,22 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// app.use('/', )
-  // router.route
+//For Local Auth
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
+require('./config/passport')(passport);
+
+app.use(function (req, res, next){
+  global.user = req.user
+  next()
+})
+
+//root route add later!!
+// app.use('/', routes)
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 

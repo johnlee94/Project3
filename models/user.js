@@ -1,10 +1,13 @@
 var mongoose = require('mongoose')
+var bcrypt = require('bcrypt-nodejs')
 
 var userSchema = new mongoose.Schema({
   username: {type: String, required: true},
   // , minlength: 5, maxlength: 20},
-  email: {type: String, required: true},
-  password: {type: String, required: true},
+  local: {
+    email: {type: String, required: true},
+    password: {type: String, required: true}
+  },
     // , minlength: 5, maxlength: 20},
   address: String,
   city: String,
@@ -17,12 +20,17 @@ var userSchema = new mongoose.Schema({
   created_at: {type: Date, default: Date.now}
 })
 
+
+userSchema.methods.encrypt = function(password){
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+userSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.local.password);
+};
+
 var User = mongoose.model('User', userSchema)
 
-// User.methods.encrypt = function(password){
-//   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-
-// };
 
 module.exports = User
 

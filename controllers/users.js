@@ -1,4 +1,6 @@
-var User = require('../models/user')
+var User = require('../models/user'),
+    passport = require('passport')
+    // flash = require('connect-flash')
 
 // function home(req, res) {
 //   // if current user, show current user
@@ -9,15 +11,41 @@ var User = require('../models/user')
 // }
 function index(req, res) {
     res.render('users/index')
-  }
+}
 
-function createUser (req, res) {
-  var user = new User(req.body)
+// GET /signup
+function getSignup(req, res) {
+  res.render('users/authentication/signup.ejs', {message: req.flash('signupMessage')})
+}
 
-  user.save(function(err, user) {
-    if (err) throw err
-    res.redirect('/')
-  })
+function createUser(req, res) {
+    var signupStrategy = passport.authenticate('local-signup', {
+        successRedirect: '/users/signup',
+        failureRedirect: '/users/signup',
+        failureFlash: true
+    })
+    return signupStrategy(req, res)
+}
+
+function getLogin(request, response) {
+    response.render('authentication/login.ejs', {
+        message: request.flash('loginMessage')
+    });
+}
+
+function postLogin(request, response) {
+    var loginProperty = passport.authenticate('local-login', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    });
+
+    return loginProperty(request, response);
+}
+
+function getLogout(request, response) {
+  request.logout();
+  response.redirect('/');
 }
 
 function showUser(req, res) {
@@ -29,27 +57,31 @@ function showUser(req, res) {
 }
 
 function updateUser(req, res) {
-  var id = req.params.id
+    var id = req.params.id
 
-  User.findById(id, function(err, user) {
-    if (err || !user) throw err
-    //need to actually update inputs (based on form ejs)
-    user.completed = !user.completed
-    user.save(function(err, updatedUser) {
-      if (err) throw err
+    User.findById(id, function(err, user) {
+        if (err || !user) throw err
+        //need to actually update inputs (based on form ejs)
+        user.completed = !user.completed
+        user.save(function(err, updatedUser) {
+            if (err) throw err
 
-      res.json(updatedUser)
+            res.json(updatedUser)
+        })
     })
-  })
 }
 
-function destroyUser (req, res) {
-  var id = req.params.id
+function destroyUser(req, res) {
+    var id = req.params.id
 
-  User.remove ({_id: id}, function (err) {
-    if (err) throw err
-    res.json({message: 'User successfuly deleted!'})
-  })
+    User.remove({
+        _id: id
+    }, function(err) {
+        if (err) throw err
+        res.json({
+            message: 'User successfuly deleted!'
+        })
+    })
 }
 
 
@@ -58,5 +90,6 @@ module.exports = {
   createUser: createUser,
   showUser: showUser,
   updateUser: updateUser,
-  destroyUser: destroyUser
+  destroyUser: destroyUser,
+  getSignup: getSignup
 }
