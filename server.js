@@ -8,7 +8,8 @@ var express = require('express'),
     debug = require('debug'),
     app = express()
     mongoose = require('./config/database'),
-    routes = require('./config/routes/users')
+    userRoutes = require('./config/routes/users'),
+    repRoutes = require('./config/routes/reps')
 
 require('dotenv').config()
     // mongoose = require('mongoose') //path to DB?
@@ -25,7 +26,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', routes)
+// app.use('/', )
+  // router.route
+app.use('/users', userRoutes)
+app.use('/reps', repRoutes)
 
 
 //404 and error handler

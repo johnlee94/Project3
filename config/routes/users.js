@@ -7,10 +7,10 @@ var express = require('express'),
 router.route("/")//Our home
   .get(index)
 
-router.route("/users")
+router.route("/")
   .post(createUser)
 
-router.route("/users/:id")
+router.route("/:id")
   .patch(updateUser)
   .delete(destroyUser)
 
