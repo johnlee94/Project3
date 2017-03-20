@@ -25,6 +25,7 @@ function updateUser(req, res) {
 
   User.findById(id, function(err, user) {
     if (err || !user) throw err
+    //need to actually update inputs (based on form ejs)
     user.completed = !user.completed
     user.save(function(err, updatedUser) {
       if (err) throw err
