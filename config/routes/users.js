@@ -1,6 +1,6 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createUser, destroyUser, updateUser} = require('../../controllers/users')
+    {index, createUser, destroyUser, updateUser, showUser} = require('../../controllers/users')
 
 
 
@@ -11,6 +11,7 @@ router.route("/")
   .post(createUser)
 
 router.route("/:id")
+  .get(showUser)
   .patch(updateUser)
   .delete(destroyUser)
 
