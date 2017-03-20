@@ -48,6 +48,13 @@ function getLogout(request, response) {
   response.redirect('/');
 }
 
+function showUser(req, res) {
+  var id = req.params.id
+  user = User.findById(id, function(err, user){
+    if (err) throw err
+    res.json(user)
+  });
+}
 
 function updateUser(req, res) {
     var id = req.params.id
@@ -83,5 +90,6 @@ module.exports = {
   createUser: createUser,
   showUser: showUser,
   updateUser: updateUser,
-  destroyUser: destroyUser
+  destroyUser: destroyUser,
+  getSignup: getSignup
 }
