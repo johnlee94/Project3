@@ -15,7 +15,7 @@ function index(req, res) {
 
 // GET /signup
 function getSignup(req, res) {
-  res.render('users/authentication/signup.ejs', {message: req.flash('signupMessage')})
+  res.render('users/authentication/signup', {message: req.flash('signupMessage')})
 }
 
 function createUser(req, res) {
