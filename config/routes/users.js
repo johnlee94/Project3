@@ -1,6 +1,6 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createUser, destroyUser, updateUser, getLogin, getSignup} = require('../../controllers/users'),
+    {index, createUser, destroyUser, updateUser, getLogin, getSignup, showUser} = require('../../controllers/users'),
     {authenticateUser} = require('./routes')
 
 
