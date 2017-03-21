@@ -13,7 +13,6 @@ router.route("/")//Our home
 // router.route("/")
 //   .post(createUser)
 
-
 router.route('/signup')
   .get(getSignup)
   .post(createUser)

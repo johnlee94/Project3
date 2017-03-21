@@ -1,5 +1,6 @@
 var User = require('../models/user'),
-    passport = require('passport')
+    passport = require('passport'),
+    newUserView = require('../config/passport')
     // flash = require('connect-flash')
 
 // function home(req, res) {
@@ -15,7 +16,7 @@ function index(req, res) {
 
 // GET /signup
 function getSignup(req, res) {
-  res.render('users/authentication/signup.ejs', {message: req.flash('signupMessage')})
+  res.render('users/authentication/signup', {message: req.flash('signupMessage')})
 }
 
 function createUser(req, res) {

@@ -32,7 +32,7 @@
     "method-override": "~1.0.0",
     "connect-flash": "~0.1.1",
     "mongo": "^0.1.0",
-    "mongoose": "~4.4",
+    "mongoose": "^4.9.0",
     "morgan": "^1.8.1",
     "serve-favicon": "^2.4.1",
     "passport": "~0.1.17",
