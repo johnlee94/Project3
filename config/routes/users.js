@@ -16,6 +16,9 @@ router.route('/signup')
   .get(getSignup)
   .post(createUser)
 
+// router.route('/login')
+//   .get(getLogin)
+
   router.route("/:id")
   .get(showUser)
   .patch(updateUser)

@@ -19,6 +19,8 @@ function getSignup(req, res) {
 }
 
 function createUser(req, res) {
+    // var id = req.params.id
+
     var signupStrategy = passport.authenticate('local-signup', {
         successRedirect: '/users/signup',
         failureRedirect: '/users/signup',
