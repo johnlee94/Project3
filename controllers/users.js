@@ -30,7 +30,7 @@ function createUser(req, res) {
 }
 
 function getLogin(request, response) {
-    response.render('authentication/login.ejs', {
+    response.render('users/authentication/login.ejs', {
         message: request.flash('loginMessage')
     });
 }
@@ -56,6 +56,18 @@ function showUser(req, res) {
     if (err) throw err
     res.json(user)
   });
+}
+
+function editUser(req, res) {
+  var id = req.params.id
+  User.findById({_id: id}, function(err, user) {
+    if (err) throw err
+    res.render('./users/edit',
+    {
+      message: req.flash('#'),
+      user: user
+    })
+  })
 }
 
 function updateUser(req, res) {
@@ -90,7 +102,10 @@ module.exports = {
   index: index,
   createUser: createUser,
   showUser: showUser,
+  editUser: editUser,
   updateUser: updateUser,
   destroyUser: destroyUser,
-  getSignup: getSignup
+  getSignup: getSignup,
+  getLogin: getLogin,
+  postLogin: postLogin
 }
