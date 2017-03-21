@@ -9,6 +9,7 @@ var userSchema = new mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true}
   },
+  isUser: {type: Boolean, default: true},
 
     // , minlength: 5, maxlength: 20},
 
