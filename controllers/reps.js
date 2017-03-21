@@ -21,9 +21,30 @@ function createRep (req, res) {
       if(err) {
         throw err
       }
-      res.redirect('/users/' + newRep._id)
+      res.redirect('/reps/' + newRep._id)
     })
   })(req, res)
+}
+
+function getLogin(req, res) {
+    res.render('reps/authentication/login.ejs', {
+        message: req.flash('loginMessage')
+    });
+}
+
+function postLogin(req, res) {
+    var loginProperty = passport.authenticate('local-rep-login', {
+        successRedirect: '/reps',
+        failureRedirect: '/reps/login',
+        failureFlash: true
+    });
+
+    return loginProperty(req, res);
+}
+
+function getLogout(req, res) {
+  req.logout();
+  res.redirect('/');
 }
 
 function showRep(req, res) {
@@ -34,12 +55,23 @@ function showRep(req, res) {
   })
 }
 
+function editRep(req, res) {
+  var id = req.params.id
+  Rep.findById({_id: id}, function(err, rep) {
+    if (err) throw err
+    res.render('./reps/edit',
+    {
+      message: req.flash('#'),
+      rep: rep
+    })
+  })
+}
+
 function updateRep(req, res) {
   var id = req.params.id
 
   Rep.findById(id, function(err, rep) {
     if (err || !rep) throw err
-    //need to actually update inputs (based on form ejs)
     rep.save(function(err, updatedRep) {
       if (err) throw err
 
@@ -56,20 +88,16 @@ function destroyRep (req, res) {
     res.json({message: 'Rep successfuly deleted!'})
   })
 }
-//
-// function showRep(req, res) {
-//   res.render('/:id')
-// }
-
 
 module.exports = {
   index: index,
   createRep: createRep,
   showRep: showRep,
+  editRep: editRep,
   updateRep: updateRep,
+  destroyRep: destroyRep,
   getSignup: getSignup,
-  destroyRep: destroyRep
+  getLogin: getLogin,
+  postLogin: postLogin,
+  getLogout: getLogout
 }
-
-
-//Test

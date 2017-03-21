@@ -155,4 +155,26 @@ module.exports = function(passport) {
         });
     }));
 
+    passport.use('local-rep-login', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    }, function(req, email, password, callback) {
+
+        // Search for a rep with this email
+        Rep.findOne({
+            'local.email': email
+        }, function(err, rep) {
+            if (err) return callback(err);
+
+            // If no rep is found
+            if (!rep) return callback(null, false, req.flash('loginMessage', 'No rep found.'));
+
+            // Wrong password
+            if (!rep.validPassword(password)) return callback(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+
+            return callback(null, rep);
+        });
+    }));
+
 }
