@@ -45,7 +45,9 @@ app.use(function (req, res, next){
 })
 
 //root route add later!!
-// app.use('/', routes)
+app.get('/', function(req, res) {
+  res.json({message: 'this works!'})
+})
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 
