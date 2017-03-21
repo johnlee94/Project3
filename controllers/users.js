@@ -19,14 +19,31 @@ function getSignup(req, res) {
 }
 
 function createUser(req, res) {
-    // var id = req.params.id
+    // var id = new User(req.body)
+    //
+    //
 
-    var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users',
-        failureRedirect: '/users/signup',
-        failureFlash: true
-    })
-    return signupStrategy(req, res)
+    passport.authenticate('local-signup', function(err, newUser) {
+      if (err) {
+        throw err
+      }
+      if (!newUser) {
+        res.redirect('/users/signup')
+      }
+      req.login(newUser, function(err) {
+        if(err) {
+          throw err
+        }
+        res.redirect('/users/' + newUser._id)
+      })
+    })(req, res)
+
+    // var signupStrategy = passport.authenticate('local-signup', {
+    //     successRedirect: '/users/' + newUser._id,
+    //     failureRedirect: '/users/signup',
+    //     failureFlash: true
+    // })
+    // return signupStrategy(req, res)
 }
 
 function getLogin(req, res) {
