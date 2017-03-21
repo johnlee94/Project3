@@ -9,13 +9,26 @@
   <body>
     <!-- display user info -->
     <div>
-      <ul>
         <% if (user) { %>
-        <li>
-          Hello <%= user.username %>
-        </li>
+          Hello <%= user.username %>, this is your profile page <br> (this page is not visible to anyone but you)
         <% } %>
+    </div>
+    <div>
+      <ul>
+        <br><li>
+          <%= user.party %>
+        </li>
+        <li>
+          <%= user.zip %>
+        </li>
+        <br><li>
+          Your reps are:
+        </li>
       </ul>
+    </div>
+    <div>
+      <!-- needs link to edit page -->
+      <a href="">Edit profile</a>
     </div>
   </body>
 </html>
