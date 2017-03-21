@@ -22,32 +22,32 @@ function createUser(req, res) {
     // var id = req.params.id
 
     var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users/signup',
+        successRedirect: '/users',
         failureRedirect: '/users/signup',
         failureFlash: true
     })
     return signupStrategy(req, res)
 }
 
-function getLogin(request, response) {
-    response.render('users/authentication/login.ejs', {
-        message: request.flash('loginMessage')
+function getLogin(req, res) {
+    res.render('users/authentication/login.ejs', {
+        message: req.flash('loginMessage')
     });
 }
 
-function postLogin(request, response) {
+function postLogin(req, res) {
     var loginProperty = passport.authenticate('local-login', {
-        successRedirect: '/',
-        failureRedirect: '/login',
+        successRedirect: '/users',
+        failureRedirect: '/users/login',
         failureFlash: true
     });
 
-    return loginProperty(request, response);
+    return loginProperty(req, res);
 }
 
-function getLogout(request, response) {
-  request.logout();
-  response.redirect('/');
+function getLogout(req, res) {
+  req.logout();
+  res.redirect('/');
 }
 
 function showUser(req, res) {
