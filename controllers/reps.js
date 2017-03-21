@@ -1,4 +1,5 @@
-var Rep = require('../models/rep')
+var Rep = require('../models/rep'),
+    passport = require('passport')
 
 function index(req, res) {
     res.render('reps/index')
