@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+    <%- include('../partials/navbar') %>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- display user info -->
+    <div>
+      <ul>
+        <% if (user) { %>
+        <li>
+          Hello <%= user.username %>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </body>
+</html>

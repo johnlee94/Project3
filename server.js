@@ -15,6 +15,7 @@ var express = require('express'),
     userRoutes = require('./config/routes/users'),
     repRoutes = require('./config/routes/reps')
 
+
 require('dotenv').config()
     // mongoose = require('mongoose') //path to DB?
 
@@ -38,7 +39,6 @@ app.use(flash());
 
 
 require('./config/passport')(passport);
-
 app.use(function (req, res, next){
   global.user = req.user
   next()
