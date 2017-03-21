@@ -1,7 +1,8 @@
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-var User = require('../models/user');
+var User = require('../models/user'),
+    Rep = require('../models/rep')
 
 module.exports = function(passport) {
 
@@ -15,7 +16,17 @@ module.exports = function(passport) {
     })
   })
 
+  passport.serializeRep(function(rep, done){
+    done(null, rep.id)
+  })
 
+  passport.deserializeRep(function(id, callback) {
+    Rep.findById(id, function(err, rep){
+      callback(err, rep)
+    })
+  })
+
+  // sign up for user
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -37,6 +48,36 @@ module.exports = function(passport) {
 
 
           newUser.save(function(err) {
+            if (err) throw err;
+            return callback(null, newUser)
+          })
+        }
+      })
+    })
+  }));
+
+  //sign up for rep
+  passport.use('rep-local-signup', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, function (req, email, password, callback) {
+    process.nextTick(function() {
+      // Find the user with email
+      Rep.findOne({'local.email' : email}, function(err, rep) {
+        if (err) return callback(err);
+
+        //If there already is a rep with this email
+        if (rep) {
+          return callback(null, false, req.flash('signupmessage', 'This email is already used.'))
+        } else {
+
+          var newRep = new Rep(req.body);
+          newRep.local.email = email;
+          newRep.local.password = newRep.encrypt(password);
+
+
+          newRep.save(function(err) {
             if (err) throw err;
             return callback(null, newUser)
           })
