@@ -5,13 +5,25 @@ function index(req, res) {
     res.render('reps/index')
   }
 
-function createRep (req, res) {
-  var rep = new Rep(req.body)
+function getSignup(req, res) {
+  res.render('reps/authentication/signup.ejs', {message: req.flash('signupMessage')})
+}
 
-  rep.save(function(err, rep) {
-    if (err) throw err
-    res.redirect('/')
-  })
+function createRep (req, res) {
+  passport.authenticate('rep-local-signup', function(err, newRep) {
+    if (err) {
+      throw err
+    }
+    if (!newRep) {
+      res.redirect('/reps/signup')
+    }
+    req.login(newRep, function(err) {
+      if(err) {
+        throw err
+      }
+      res.redirect('/users/' + newRep._id)
+    })
+  })(req, res)
 }
 
 function showRep(req, res) {
@@ -55,6 +67,7 @@ module.exports = {
   createRep: createRep,
   showRep: showRep,
   updateRep: updateRep,
+  getSignup: getSignup,
   destroyRep: destroyRep
 }
 

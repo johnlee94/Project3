@@ -6,9 +6,25 @@ var User = require('../models/user'),
 
 module.exports = function(passport) {
 
-  passport.serializeUser(function(user, done){
+  passport.serializeUser(function(user, done) {
+  if (isUser(user)) {
     done(null, user.id)
+  } else if (isRep(user)) {
+    done(null, user.id)
+  }
+});
+
+passport.deserializeUser(function(user, done) {
+if (isUser(user)) {
+  User.findById(id, function(err, user){
+    callback(err, user)
   })
+} else if (isS(user)) {
+  User.findById(id, function(err, user){
+    callback(err, user)
+  })
+}
+});
 
   passport.deserializeUser(function(id, callback) {
     User.findById(id, function(err, user){
@@ -16,15 +32,6 @@ module.exports = function(passport) {
     })
   })
 
-  passport.serializeRep(function(rep, done){
-    done(null, rep.id)
-  })
-
-  passport.deserializeRep(function(id, callback) {
-    Rep.findById(id, function(err, rep){
-      callback(err, rep)
-    })
-  })
 
   // sign up for user
   passport.use('local-signup', new LocalStrategy({
@@ -79,7 +86,7 @@ module.exports = function(passport) {
 
           newRep.save(function(err) {
             if (err) throw err;
-            return callback(null, newUser)
+            return callback(null, newRep)
           })
         }
       })
