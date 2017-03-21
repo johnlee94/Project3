@@ -1,6 +1,6 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createRep, destroyRep, updateRep, showRep} = require('../../controllers/reps')
+    {index, createRep, showRep, updateRep, destroyRep} = require('../../controllers/reps')
 
 
 
@@ -11,7 +11,7 @@ router.route("/")
   .post(createRep)
 
 router.route("/:id")
-  // .show()
+  .get(showRep)
   .patch(updateRep)
   .delete(destroyRep)
 

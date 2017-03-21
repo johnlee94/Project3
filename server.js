@@ -31,7 +31,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 //For Local Auth
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+app.use(session({ secret: 'Virtual-Town-Hall' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -45,7 +45,9 @@ app.use(function (req, res, next){
 })
 
 //root route add later!!
-// app.use('/', routes)
+app.get('/', function(req, res) {
+  res.json({message: 'this works!'})
+})
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 
