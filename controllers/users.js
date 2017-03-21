@@ -22,32 +22,32 @@ function createUser(req, res) {
     // var id = req.params.id
 
     var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users/signup',
+        successRedirect: '/users',
         failureRedirect: '/users/signup',
         failureFlash: true
     })
     return signupStrategy(req, res)
 }
 
-function getLogin(request, response) {
-    response.render('authentication/login.ejs', {
-        message: request.flash('loginMessage')
+function getLogin(req, res) {
+    res.render('users/authentication/login.ejs', {
+        message: req.flash('loginMessage')
     });
 }
 
-function postLogin(request, response) {
+function postLogin(req, res) {
     var loginProperty = passport.authenticate('local-login', {
-        successRedirect: '/',
-        failureRedirect: '/login',
+        successRedirect: '/users',
+        failureRedirect: '/users/login',
         failureFlash: true
     });
 
-    return loginProperty(request, response);
+    return loginProperty(req, res);
 }
 
-function getLogout(request, response) {
-  request.logout();
-  response.redirect('/');
+function getLogout(req, res) {
+  req.logout();
+  res.redirect('/');
 }
 
 function showUser(req, res) {
@@ -56,6 +56,18 @@ function showUser(req, res) {
     if (err) throw err
     res.json(user)
   });
+}
+
+function editUser(req, res) {
+  var id = req.params.id
+  User.findById({_id: id}, function(err, user) {
+    if (err) throw err
+    res.render('./users/edit',
+    {
+      message: req.flash('#'),
+      user: user
+    })
+  })
 }
 
 function updateUser(req, res) {
@@ -90,7 +102,10 @@ module.exports = {
   index: index,
   createUser: createUser,
   showUser: showUser,
+  editUser: editUser,
   updateUser: updateUser,
   destroyUser: destroyUser,
-  getSignup: getSignup
+  getSignup: getSignup,
+  getLogin: getLogin,
+  postLogin: postLogin
 }
