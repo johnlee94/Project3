@@ -19,15 +19,23 @@ function getSignup(req, res) {
 }
 
 function createUser(req, res) {
-    // var id = req.params.id
+    // var id = new User(req.body)
+    //
+    //
 
     var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users/signup',
+
+        // _id: id,
+        successRedirect: '/users/:id',
         failureRedirect: '/users/signup',
         failureFlash: true
     })
     return signupStrategy(req, res)
 }
+
+///////////////////
+
+//////////////////
 
 function getLogin(request, response) {
     response.render('authentication/login.ejs', {
