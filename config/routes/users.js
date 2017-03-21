@@ -3,10 +3,6 @@ var express = require('express'),
     {index, createUser, showUser, updateUser, destroyUser, getLogin, getSignup, editUser, postLogin} = require('../../controllers/users'),
     {authenticateUser} = require('./routes')
 
-
-
-
-
 router.route("/")//Our home
   .get(index)
 
