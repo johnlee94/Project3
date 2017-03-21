@@ -36,6 +36,10 @@ function destroyRep (req, res) {
     res.json({message: 'Rep successfuly deleted!'})
   })
 }
+//
+// function showRep(req, res) {
+//   res.render('/:id')
+// }
 
 
 module.exports = {
@@ -44,3 +48,6 @@ module.exports = {
   destroyRep: destroyRep,
   updateRep: updateRep
 }
+
+
+//Test

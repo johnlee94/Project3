@@ -59,10 +59,9 @@ function showUser(req, res) {
 function updateUser(req, res) {
     var id = req.params.id
 
-    User.findById(id, function(err, user) {
+    user = User.findById(id, function(err, user) {
         if (err || !user) throw err
         //need to actually update inputs (based on form ejs)
-        user.completed = !user.completed
         user.save(function(err, updatedUser) {
             if (err) throw err
 
