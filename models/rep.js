@@ -11,6 +11,7 @@ var repSchema = new mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true}
   },
+  isRep: {type: Boolean, default: true},
   city: String,
   state: {type: String, required: true},
     // , minlength: 2, maxlength: 2},
