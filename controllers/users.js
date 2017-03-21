@@ -72,7 +72,7 @@ function showUser(req, res) {
   var id = req.params.id
   user = User.findById(id, function(err, user){
     if (err) throw err
-    res.json(user)
+    res.render('./users/show', {user: user})
   });
 }
 
