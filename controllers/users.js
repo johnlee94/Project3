@@ -1,5 +1,6 @@
 var User = require('../models/user'),
-    passport = require('passport')
+    passport = require('passport'),
+    newUserView = require('../config/passport')
     // flash = require('connect-flash')
 
 // function home(req, res) {
@@ -20,7 +21,7 @@ function getSignup(req, res) {
 
 function createUser(req, res) {
     var signupStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/users/signup',
+        successRedirect: '/users/' + req._id,
         failureRedirect: '/users/signup',
         failureFlash: true
     })
