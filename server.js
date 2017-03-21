@@ -31,7 +31,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 //For Local Auth
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+app.use(session({ secret: 'Virtual-Town-Hall' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

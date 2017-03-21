@@ -13,13 +13,20 @@ function createRep (req, res) {
   })
 }
 
+function showRep(req, res) {
+  var id = req.params.id
+  rep = Rep.findById(id, function(err, rep) {
+    if (err) throw err
+    res.json(rep)
+  })
+}
+
 function updateRep(req, res) {
   var id = req.params.id
 
   Rep.findById(id, function(err, rep) {
     if (err || !rep) throw err
     //need to actually update inputs (based on form ejs)
-    rep.completed = !rep.completed
     rep.save(function(err, updatedRep) {
       if (err) throw err
 
@@ -45,8 +52,9 @@ function destroyRep (req, res) {
 module.exports = {
   index: index,
   createRep: createRep,
-  destroyRep: destroyRep,
-  updateRep: updateRep
+  showRep: showRep,
+  updateRep: updateRep,
+  destroyRep: destroyRep
 }
 
 
