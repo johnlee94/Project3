@@ -48,6 +48,10 @@ app.use(function (req, res, next){
 app.get('/', function(req, res) {
   res.json({message: 'this works!'})
 })
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/')
+})
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 
