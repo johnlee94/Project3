@@ -14,7 +14,8 @@ var express = require('express'),
     mongoose = require('./config/database'),
     userRoutes = require('./config/routes/users'),
     repRoutes = require('./config/routes/reps'),
-    proposalRoutes = require('./config/routes/proposals')
+    proposalRoutes = require('./config/routes/proposals'),
+    methodOverride = require('method-override')
 
 
 require('dotenv').config()
@@ -38,6 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+app.use(methodOverride('_method'))
 
 require('./config/passport')(passport);
 app.use(function (req, res, next){
@@ -93,5 +95,5 @@ app.use(function(err, req, res, next) {
 
 var port = process.env.PORT || 3000
 app.listen(port, function() {
-  console.log('Port ' + 3000 + ', baby!')
+  console.log('Port ' + 3000 + '🔥')
 })
