@@ -1,10 +1,20 @@
-<h2>Signup</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('./../partials/head') %>
+    <%- include('./../partials/navbar') %>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+<body>
+<h2>Edit User Profile</h2>
 
 <% if (message.length > 0) { %>
   <div class="alert alert-danger"><%= message %></div>
 <% } %>
 
-<form method="post" action="/users/signup">
+<form method="post" action="/users/<%= user.id %>">
+  <input type="hidden" name="_method" value="PATCH">
   <div class="form-group">
     <label for="username">Username</label>
     <input class="form-control" type="text" name="username" id="username">
@@ -52,3 +62,12 @@
 
   <input class="btn btn-default" type="submit">
 </form>
+<br>
+<form method="post" action="/users/<%= user.id %>">
+    <div>
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-default" type="submit">DELETE ACCOUNT</button>
+    </div>
+</form>
+
+</body>
