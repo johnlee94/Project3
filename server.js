@@ -13,7 +13,8 @@ var express = require('express'),
     app = express(),
     mongoose = require('./config/database'),
     userRoutes = require('./config/routes/users'),
-    repRoutes = require('./config/routes/reps')
+    repRoutes = require('./config/routes/reps'),
+    proposalRoutes = require('./config/routes/proposals')
 
 
 require('dotenv').config()
@@ -54,6 +55,7 @@ app.get('/logout', function(req, res) {
 })
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
+app.use('/proposals', proposalRoutes)
 
 
 //404 and error handler
