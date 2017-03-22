@@ -88,19 +88,40 @@ function editUser(req, res) {
   })
 }
 
-function updateUser(req, res) {
-    var id = req.params.id
+// function updateUser(req, res) {
+//     var id = req.params.id
+//
+//     user = User.findById(id, function(err, user) {
+//         if (err || !user) throw err
+//         //need to actually update inputs (based on form ejs)
+//         user.save(function(err, updatedUser) {
+//             if (err) throw err
+//
+//             res.json(updatedUser)
+//         })
+//     })
+// }
 
-    user = User.findById(id, function(err, user) {
-        if (err || !user) throw err
-        //need to actually update inputs (based on form ejs)
-        user.save(function(err, updatedUser) {
-            if (err) throw err
+function updateUser(request, response) {
+  var id = request.params.id
+  console.log(user)
 
-            res.json(updatedUser)
-        })
+  User.findById({_id: id}, function(error, user){
+    if(error) response.json({message: 'could not find user b/c' + error})
+
+    if(request.body.username) user.username = request.body.username
+    // if(request.body.local.email) user.local.email = request.body.local.email
+    // if(request.body.local.password) user.local.password = request.body.local.password
+    if(request.body.state) user.state = request.body.state
+    if(request.body.zip) user.zip = request.body.zip
+
+    user.save(function(error){
+      if(error) response.json({message: 'could not update'})
+      response.json({message: 'user successfully updated'})
     })
+  })
 }
+
 
 function destroyUser(req, res) {
     var id = req.params.id
