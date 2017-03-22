@@ -1,1 +1,20 @@
-<h2>All Posts</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>All Proposals</h2>
+    <% proposals.forEach(function(proposal) { %>
+
+      <h3><%= proposal.title %></h3>
+      <p><%= proposal.content %></p>
+      <p>Created by: <%= proposal.populate('rep') %><p>
+      <button class="yay">Yay</button> | <button class='nay'>Nay</button>
+    <% }) %>
+
+
+
+  </body>
+</html>

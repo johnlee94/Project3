@@ -10,7 +10,10 @@ var Proposal = require('../models/proposal'),
 //   res.render('users/new')
 // }
 function index(req, res) {
-  res.render('proposals/index.ejs')
+  Proposal.find({}, function(err, proposals) {
+    if (err) throw err
+    res.render('proposals/index.ejs', {proposals: proposals})
+  })
 }
 
 function newProposal(req, res) {
@@ -19,10 +22,10 @@ function newProposal(req, res) {
 
 function createProposal(req, res) {
     var newProposal = new Proposal(req.body)
-
+    newProposal.rep = req.user
     newProposal.save(function(err, savedProposal) {
       if (err) throw err
-      res.render('proposals/index')
+      // index()
       //add flash message for successful Proposal Post
     })
   }
