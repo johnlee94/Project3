@@ -10,7 +10,7 @@
 
       <h3><%= proposal.title %></h3>
       <p><%= proposal.content %></p>
-      <p>Created by: <%= proposal.populate('rep') %><p>
+      <p>Created by: <%= proposal.rep.firstname %><p>
       <button class="yay">Yay</button> | <button class='nay'>Nay</button>
     <% }) %>
 

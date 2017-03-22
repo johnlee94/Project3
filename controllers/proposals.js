@@ -10,7 +10,9 @@ var Proposal = require('../models/proposal'),
 //   res.render('users/new')
 // }
 function index(req, res) {
-  Proposal.find({}, function(err, proposals) {
+  Proposal.find({})
+    .populate('rep')
+    .exec(function(err, proposals) {
     if (err) throw err
     res.render('proposals/index.ejs', {proposals: proposals})
   })
