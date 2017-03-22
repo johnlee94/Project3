@@ -46,8 +46,12 @@ app.use(function (req, res, next){
 
 //root route add later!!
 app.get('/', function(req, res) {
-  res.json({message: 'this works!'})
+  res.render('home');
 })
+
+// var home = require('./config/routes/home')
+// app.use('/', home)
+
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/')
