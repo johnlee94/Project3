@@ -12,6 +12,7 @@ var Proposal = require('../models/proposal'),
 function index(req, res) {
   Proposal.find({})
     .populate('rep')
+    .populate('votes')
     .exec(function(err, proposals) {
     if (err) throw err
     res.render('proposals/index.ejs', {proposals: proposals})

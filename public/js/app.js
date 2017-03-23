@@ -1,4 +1,6 @@
 console.log("header partial is connected")
 
 
-function 
+function clickYay() {
+  return $()
+}
