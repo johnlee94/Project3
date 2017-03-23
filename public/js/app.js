@@ -1,14 +1,7 @@
-//HOW TO REQUIRE MODELS ???? WTF???? XD
-// var mongoose = require('mongoose'),
-//     User = require('../../models/user'),
-//     Proposal = require('../../models/proposal')
-//
-// function getStuff(req, res) {
-//
-// }
-
 
 console.log("header partial is connected")
+
+function
 
 $(document).ready(function() {
   $yaybutton = $('#yay')

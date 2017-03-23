@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
 
+
 var dbUri = process.env.MONGODB_URI ||
             'mongodb://localhost/virtualtownhall'
 

@@ -7,26 +7,31 @@ var express = require('express'),
     ejsLayouts = require('express-ejs-layouts'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
     bcrypt = require('bcrypt'),
     debug = require('debug'),
-    app = express(),
-    mongoose = require('./config/database'),
-    userRoutes = require('./config/routes/users'),
-    repRoutes = require('./config/routes/reps'),
-    proposalRoutes = require('./config/routes/proposals'),
+     routes = require('./config/routes/routes'),
+     userRoutes = require('./config/routes/users'),
+     repRoutes = require('./config/routes/reps'),
+     proposalRoutes = require('./config/routes/proposals')
+
+
+
+    // userRoutes = require('./config/routes/users'),
+    // repRoutes = require('./config/routes/reps'),
+    // proposalRoutes = require('./config/routes/proposals'),
     methodOverride = require('method-override')
 
 
 require('dotenv').config()
     // mongoose = require('mongoose') //path to DB?
-
+var app = express()
 //engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.locals.title = "Virtual Town Hall"
-
+  var  mongoose = require('./config/database')
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -59,13 +64,34 @@ app.get('/', function(req, res) {
 // var home = require('./config/routes/home')
 // app.use('/', home)
 
+//use app.get?
+// app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'} ));
+// app.get('/auth/facebook/callback',
+//  passport.authenticate('facebook', {
+//    successRedirect: '/proposals',
+//    failureRedirect: '/users/signup'
+//  })
+// );
+
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/')
 })
+
+
+app.use('/auth/facebook', routes)
+
 app.use('/users', userRoutes)
+
 app.use('/reps', repRoutes)
+
 app.use('/proposals', proposalRoutes)
+
+
+// router.route("/secret")
+//   .get(authenticateUser, usersController.secret)
+//use this for edit page?
+
 
 
 //404 and error handler

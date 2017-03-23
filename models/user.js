@@ -9,6 +9,12 @@ var userSchema = new mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true}
   },
+  facebook         : {
+    id           : String,
+    token        : String,
+    email        : String,
+    name         : String
+  },
   isUser: {type: Boolean, default: true},
 
     // , minlength: 5, maxlength: 20},
