@@ -1,5 +1,6 @@
 var Proposal = require('../models/proposal'),
-    passport = require('passport')
+    passport = require('passport'),
+    mongoose = require('mongoose')
     // flash = require('connect-flash')
 
 // function home(req, res) {
@@ -43,12 +44,62 @@ function showProposal(req, res) {
     res.render('proposals/show.ejs')
   });
 }
+
 //
-// function makeVote(req, res) {
-//   var id = req.user
-//   var yayVote =
-//   Proposal.votes.push(req.body)
-// }
+
+
+function createYayVote(req, res) {
+  var proposalId = req.body.proposalId
+  var user = req.user
+  // db.collection('proposals').findById({id: proposalId)}, function(err, proposal){
+  //   proposal.votes.insert({
+  //     user: userId,
+  //     yay: true,
+  //     nay: false
+  //   })
+  // })
+
+  Proposal.findById(proposalId, function(err, proposal) {
+    if (err) throw err
+
+    function sameVote() {
+      for (var i = 0; i < proposal.votes.length; i++) {
+        if(proposal.votes[i].user == user.id) {
+          console.log(proposal.votes[i].user)
+          return true
+        }
+      }
+      return false
+    }
+    if(!sameVote()) {
+      proposal.votes.push({
+        user: user,
+        yay: true,
+        nay: false
+      })
+    }
+
+    proposal.save(function(err, updatedProposal){
+      if(err) throw err
+      res.json(updatedProposal)
+    })
+  })
+}
+
+function createNayVote(req, res) {
+  var proposalId = req.body.proposalId
+  var userId = req.body.userId
+
+  db.collection('proposals').findById({id: proposalId}, function(err, proposal){
+    proposal.votes.insert({
+      user: userId,
+      yay: false,
+      nay: true
+    })
+  })
+}
+
+
 
 
 // function yayVoteCount(req, res) {
@@ -62,5 +113,7 @@ module.exports = {
   index: index,
   newProposal: newProposal,
   createProposal: createProposal,
-  showProposal: showProposal
+  showProposal: showProposal,
+  createYayVote: createYayVote,
+  createNayVote: createNayVote
 }

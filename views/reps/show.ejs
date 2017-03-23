@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+    <%- include('../partials/navbar') %>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- display rep info -->
+    <div>
+          Hello <%= rep.firstname %>, this is your profile page <br> (this page is not visible to anyone but you)
+    </div>
+    <div>
+      <ul>
+        <br><li>
+          <%= rep.party %>
+        </li>
+        <li>
+          <%= rep.zip %>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <!-- needs link to edit page -->
+      <a href="/reps/<%= rep.id %>/edit">Edit profile</a>
+    </div>
+  </body>
+</html>

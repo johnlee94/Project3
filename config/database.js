@@ -1,7 +1,8 @@
 var mongoose = require('mongoose')
 
-var dbUri = process.env.MONGOD_URI ||
-            'mongodb://localhost/' + process.env.LOCAL_DB
+
+var dbUri = process.env.MONGODB_URI ||
+            'mongodb://localhost/virtualtownhall'
 
 if (!process.env.MONGODB_URI) {
   require('net').connect(27017, 'localhost').on('error', function() {
