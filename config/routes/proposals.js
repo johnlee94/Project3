@@ -1,6 +1,6 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createProposal, showProposal, newProposal, createYayVote, createNayVote} = require('../../controllers/proposals')
+    {index, createProposal, showProposal, newProposal, createYayVote, createNayVote, api} = require('../../controllers/proposals')
 
 //still need to make a logout rep and users logout
 
