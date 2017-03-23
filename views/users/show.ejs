@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <%- include('../partials/head') %>
-    <%- include('../partials/navbar') %>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <!-- display user info -->
-    <div>
-        <% if (user) { %>
-          Hello <%= user.username %>, this is your profile page <br> (this page is not visible to anyone but you)
-        <% } %>
-    </div>
-    <div>
-      <ul>
-        <br><li>
-          <%= user.party %>
-        </li>
-        <li>
-          <%= user.zip %>
-        </li>
-        <br><li>
-          Your reps are:
-        </li>
-      </ul>
-    </div>
-    <div>
-      <!-- needs link to edit page -->
-      <a href="/users/<%= user.id %>/edit">Edit profile</a>
-    </div>
-  </body>
+        <%- include('../partials/navbar') %>
+            <meta charset="utf-8">
+</head>
+<body>
+  <!-- display user info -->
+  <div>
+    <% if (user) { %>
+        Hello
+        <strong><%= user.username %></strong>, this is your profile page <br> (this page is not visible to anyone but you)
+  </div>
+  <div>
+    <ul>
+      <br>
+      <li>
+          <strong>Email: </strong> <%= user.local.email %>
+      </li>
+      <br>
+      <li>
+          <strong>Part: </strong><%= user.party %>
+      </li>
+      <br>
+      <li>
+          <strong>Zip: </strong><%= user.zip %>
+      </li>
+      <br>
+      <li>
+          <strong>State: </strong><%= user.state %>
+      </li>
+      <br>
+      <li>
+          <strong>Your reps are: </strong>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <!-- needs link to edit page -->
+    <a href="/users/<%= user.id %>/edit">Edit profile</a>
+    <% } %>
+  </div>
+</body>
+
 </html>
