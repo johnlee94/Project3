@@ -16,11 +16,10 @@ function index(req, res) {
     .populate('votes')
     .exec(function(err, proposals) {
     if (err) throw err
-    yayVotes = proposals.votes.find({yay: true})
-    nayVotes = proposals.votes.find({nay: true})
     res.render('proposals/index.ejs', {proposals: proposals})
   })
-}
+  }
+
 
 function newProposal(req, res) {
   res.render('proposals/new.ejs')
@@ -79,6 +78,7 @@ function createYayVote(req, res) {
         yay: true,
         nay: false
       })
+      proposal.yayVotes += 1
     }
 
     proposal.save(function(err, updatedProposal){
@@ -111,6 +111,7 @@ function createNayVote(req, res) {
         yay: false,
         nay: true
       })
+      proposal.nayVotes += 1
     }
 
     proposal.save(function(err, updatedProposal){
