@@ -5,7 +5,7 @@
 // console.log(User)
 console.log("header partial is connected")
 
-function
+function addUpVote()
 
 $(document).ready(function() {
   $yaybutton = $('#yay')

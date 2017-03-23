@@ -34,7 +34,6 @@ function createProposal(req, res) {
   }
 
 
-
 function showProposal(req, res) {
   var id = req.params.id
   proposal = Proposal.findById(id, function(err, proposal){
