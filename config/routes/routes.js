@@ -21,6 +21,8 @@ function authenticateRep(req, res, next) {
 //   .get(authenticateUser, usersController.secret)
 //use this for edit page?
 
+
+
 module.exports = {
   authenticateUser: authenticateUser,
   authenticateRep: authenticateRep

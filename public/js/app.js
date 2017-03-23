@@ -1,26 +1,19 @@
+// var User = require('../../models.user.js'),
+//     Rep = require('../../models.rep.js'),
+//     Proposal = require('../../models.proposal.js')
+
+// console.log(User)
 console.log("header partial is connected")
+
+function
 
 $(document).ready(function() {
   $yaybutton = $('#yay')
   $naybutton = $('#nay')
 
-  $yaybutton.click(function() {
-    $.post('/proposals')
-  })
+  $yaybutton.on('click', addVote)
+
 
 })
 
-
-("#yay").click(function() {
-  var yaycounter = 0;
-    $('#counter').html(function(i, val) {
-        $.ajax({
-            url: '/proposals',
-            type: 'POST',
-            data: {increment: true},
-            success: function() { alert('Request has returned') }
-        });
-        return +val+1;
-        console.log(+val+1)
-    });
-}
+function addVote() {}

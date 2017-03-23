@@ -15,7 +15,8 @@ var express = require('express'),
     userRoutes = require('./config/routes/users'),
     repRoutes = require('./config/routes/reps'),
     proposalRoutes = require('./config/routes/proposals'),
-    methodOverride = require('method-override')
+    methodOverride = require('method-override'),
+    router =
 
 
 require('dotenv').config()
