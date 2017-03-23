@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%- include('./../partials/head') %>
+    <%- include('./../partials/navbar') %>
+
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -11,7 +14,9 @@
       <h3><%= proposal.title %></h3>
       <p><%= proposal.content %></p>
       <p>Created by: <%= proposal.rep.firstname %><p>
-      <button class="yay">Yay</button> | <button class='nay'>Nay</button>
+      <!-- <h3>yay: <%= proposal.votes %> </h3> -->
+      <p id="counter">Xxx</p>
+      <button id="yay">Yay</button> | <button id='nay'>Nay</button>
     <% }) %>
 
 
