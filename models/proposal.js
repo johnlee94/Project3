@@ -12,6 +12,8 @@ var proposalSchema = new mongoose.Schema({
       nay: {type:Boolean, default: false}
     }
   ],
+  yayVotes: {type: Number, default: 0},
+  nayVotes: {type: Number, default: 0},
   created_at: {type: Date, default: Date.now}
 })
 
