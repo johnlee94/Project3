@@ -216,6 +216,11 @@ function(token, refreshToken, profile, done) {
                 newUser.facebook.token = token; // we will save the token that facebook provides to the user
                 newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
                 newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                newUser.local.email = profile.emails[0].value
+                newUser.local.password = 'Password'
+                newUser.state = "Not yet inputed, edit in profile"
+                newUser.zip = 99999
+                newUser.username = "Please update your username in your profile"
 
                 // save our user to the database
                 newUser.save(function(err) {

@@ -10,6 +10,7 @@ function authenticateUser(req, res, next) {
     // Otherwise the request is always redirected to the home page
     res.redirect('/');
   }
+
 function authenticateRep(req, res, next) {
     // If the user is authenticated, then we continue the execution
     if (req.isAuthenticated()) return next();
@@ -22,20 +23,17 @@ function authenticateRep(req, res, next) {
 //   .get(authenticateUser, usersController.secret)
 //use this for edit page?
 
-// =====================================
-// FACEBOOK ROUTES =====================
-// =====================================
-// route for facebook authentication and login
-// router.route('/auth/facebook')
-//   .get(getFacebook)
-//
-// // handle the callback after facebook has authenticated the user
-// router.route('/auth/facebook/callback')
-//   .get(getFacebookCallback)
+//=====================================
+//FACEBOOK ROUTES =====================
+//=====================================
+//route for facebook authentication and login
+router.route('/')
+  .get(getFacebook)
 
-// =======END FACEBOOK ROUTES===========
+// handle the callback after facebook has authenticated the user
+router.route('/callback')
+  .get(getFacebookCallback)
 
-module.exports = {
-  authenticateUser: authenticateUser,
-  authenticateRep: authenticateRep
-}
+//=======END FACEBOOK ROUTES===========
+
+module.exports = router

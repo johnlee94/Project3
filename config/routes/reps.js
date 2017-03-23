@@ -1,9 +1,17 @@
 var express = require('express'),
     router = new express.Router(),
-    {index, createRep, showRep, updateRep, destroyRep, getSignup, getLogin, postLogin, editRep} = require('../../controllers/reps'),
-    {authenticateRep} = require('./routes')
+    {index, createRep, showRep, updateRep, destroyRep, getSignup, getLogin, postLogin, editRep} = require('../../controllers/reps')
+    // {authenticateRep} = require('./routes')
 
 //still need to make a logout rep and users logout
+
+function authenticateRep(req, res, next) {
+    // If the user is authenticated, then we continue the execution
+    if (req.isAuthenticated()) return next();
+
+    // Otherwise the request is always redirected to the home page
+    res.redirect('/');
+  }
 
 router.route("/")//Our home
   .get(index)

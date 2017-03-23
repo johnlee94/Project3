@@ -30,6 +30,7 @@ function createProposal(req, res) {
       if (err) throw err
       // index()
       //add flash message for successful Proposal Post
+      res.redirect('/proposals')
     })
   }
 
