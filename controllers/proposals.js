@@ -42,7 +42,19 @@ function showProposal(req, res) {
     res.render('proposals/show.ejs')
   });
 }
+//
+// function makeVote(req, res) {
+//   var id = req.user
+//   var yayVote =
+//   Proposal.votes.push(req.body)
+// }
 
+
+// function yayVoteCount(req, res) {
+//   var
+//   if yay === true
+//   array.push
+// }
 
 
 module.exports = {
