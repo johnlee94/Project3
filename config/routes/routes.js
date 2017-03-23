@@ -1,4 +1,5 @@
 var express = require('express'),
+    {getFacebook, getFacebookCallback} = require('../../controllers/users'),
     router = new express.Router()
 
 
@@ -21,7 +22,18 @@ function authenticateRep(req, res, next) {
 //   .get(authenticateUser, usersController.secret)
 //use this for edit page?
 
+// =====================================
+// FACEBOOK ROUTES =====================
+// =====================================
+// route for facebook authentication and login
+router.route('/auth/facebook')
+  .get(getFacebook)
 
+// handle the callback after facebook has authenticated the user
+router.route('/auth/facebook/callback')
+  .get(getFacebookCallback)
+
+// =======END FACEBOOK ROUTES===========
 
 module.exports = {
   authenticateUser: authenticateUser,

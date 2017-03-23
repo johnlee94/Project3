@@ -16,7 +16,7 @@ var express = require('express'),
     repRoutes = require('./config/routes/reps'),
     proposalRoutes = require('./config/routes/proposals'),
     methodOverride = require('method-override'),
-    router =
+    routes = require('./config/routes/routes')
 
 
 require('dotenv').config()
@@ -56,13 +56,22 @@ app.get('/', function(req, res) {
 // var home = require('./config/routes/home')
 // app.use('/', home)
 
+
+
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/')
 })
+// app.use('/', routes)
 app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 app.use('/proposals', proposalRoutes)
+
+
+// router.route("/secret")
+//   .get(authenticateUser, usersController.secret)
+//use this for edit page?
+
 
 
 //404 and error handler
