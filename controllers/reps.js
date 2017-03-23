@@ -71,21 +71,21 @@ function updateRep(request, response) {
   var id = request.params.id
   console.log(rep)
 
-  User.findById({_id: id}, function(error, user){
+  Rep.findById({_id: id}, function(error, rep){
     if(error) response.json({message: 'could not find rep b/c' + error})
 
-    if(request.body.firstname) user.firstname = request.body.firstname
-    if(request.body.lastname) user.lastname = request.body.lastname
-    if(request.body.city) user.city = request.body.city
-    if(request.body.state) user.state = request.body.state
-    if(request.body.zip) user.zip = request.body.zip
-    if(request.body.county) user.county = request.body.county
-    if(request.body.party) user.party = request.body.party
-    if(request.body.district) user.district = request.body.district
+    if(request.body.firstname) rep.firstname = request.body.firstname
+    if(request.body.lastname) rep.lastname = request.body.lastname
+    if(request.body.city) rep.city = request.body.city
+    if(request.body.state) rep.state = request.body.state
+    if(request.body.zip) rep.zip = request.body.zip
+    if(request.body.county) rep.county = request.body.county
+    if(request.body.party) rep.party = request.body.party
+    if(request.body.district) rep.district = request.body.district
 
-    user.save(function(error){
+    rep.save(function(error){
       if(error) response.json({message: 'could not update'})
-      response.json({message: 'user successfully updated'})
+      response.json({message: 'rep successfully updated'})
     })
   })
 }
