@@ -34,7 +34,7 @@ function getLogin(req, res) {
 
 function postLogin(req, res) {
     var loginProperty = passport.authenticate('local-rep-login', {
-        successRedirect: '/reps',
+        successRedirect: '/proposals',
         failureRedirect: '/reps/login',
         failureFlash: true
     });

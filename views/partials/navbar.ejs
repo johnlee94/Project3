@@ -8,14 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-            <a class="navbar-brand" href="#">vTownHall</a>
+            <a class="navbar-brand" href="/">vTownHall</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+            <!-- <ul class="nav navbar-nav">
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -28,7 +27,7 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
-            </ul>
+            </ul> -->
             <!-- <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
@@ -37,9 +36,25 @@
       </form> -->
             <!-- need to change state of navbar based on user/rep logged in. -->
             <!-- < CHERRY if(user) { %> -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/logout">Logout</a></li>
-                    <li class="dropdown">
+            <ul class="nav navbar-nav navbar-right">
+              <% if (user) { %>
+                <li><a href="/users/<%= user.id %>">View Users Profile</a></li>
+                <li><a href="/reps/<%= user.id %>">View Reps Profile</a></li>
+                  <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+              <!-- <//% } else if (rep) { %>
+                <li><a href="/reps/<%//= rep.id %>">View Profile</a></li>
+                <li><a href="/logout">Logout</a></li> -->
+                <li><a href="/users/login">User Login</a></li>
+                <li><a href="/users/signup">User Signup</a></li>
+                <li><a href="/reps/login">Rep Login</a></li>
+                <li><a href="/reps/signup">Rep Signup</a></li>
+                <% } %>
+                </ul>
+
+
+                        <!-- ======= drop down start ========= -->
+                        <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
@@ -48,8 +63,9 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>
-                    </li>
-                </ul>
+                    </li> -->
+                        <!-- ======= drop down end ========= -->
+                    </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
