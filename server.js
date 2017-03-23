@@ -13,7 +13,8 @@ var express = require('express'),
      routes = require('./config/routes/routes'),
      userRoutes = require('./config/routes/users'),
      repRoutes = require('./config/routes/reps'),
-     proposalRoutes = require('./config/routes/proposals')
+     proposalRoutes = require('./config/routes/proposals'),
+     apiRoutes = require('./config/routes/api')
 
 
 
@@ -86,6 +87,9 @@ app.use('/users', userRoutes)
 app.use('/reps', repRoutes)
 
 app.use('/proposals', proposalRoutes)
+
+// API router 
+app.use('/api', apiRoutes)
 
 
 // router.route("/secret")
