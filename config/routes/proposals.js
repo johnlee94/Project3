@@ -9,7 +9,7 @@ router.route("/")
   .patch(createYayVote)
 
 router.route("/bad")
-  .post(createNayVote)
+  .patch(createNayVote)
 
 router.route("/new")
   .get(newProposal)

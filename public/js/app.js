@@ -23,13 +23,19 @@ $(document).ready(function() {
     )
   })
 
-  // $naybutton.on('click', function() {
-  //   $.ajax({
-  //     type: "POST",
-  //     url: "./proposals/bad"
-  //     data:{}
-  //   })
-  // })
+  $naybutton.on('click', function() {
+    var unchompedProposal = $(this).attr('class')
+    var proposal = unchompedProposal.slice(0, -1)
+    $.ajax({
+      type: "PATCH",
+      url: "/proposals/bad",
+      data:{proposalId: proposal}
+    }).then(
+      function(data) {
+        console.log(data)
+      }
+    )
+  })
 
 
 

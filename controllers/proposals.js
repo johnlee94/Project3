@@ -16,6 +16,8 @@ function index(req, res) {
     .populate('votes')
     .exec(function(err, proposals) {
     if (err) throw err
+    yayVotes = proposals.votes.find({yay: true})
+    nayVotes = proposals.votes.find({nay: true})
     res.render('proposals/index.ejs', {proposals: proposals})
   })
 }
@@ -88,16 +90,36 @@ function createYayVote(req, res) {
 
 function createNayVote(req, res) {
   var proposalId = req.body.proposalId
-  var userId = req.body.userId
+  var user = req.user
 
-  db.collection('proposals').findById({id: proposalId}, function(err, proposal){
-    proposal.votes.insert({
-      user: userId,
-      yay: false,
-      nay: true
+
+  Proposal.findById(proposalId, function(err, proposal) {
+    if (err) throw err
+
+    function sameVote() {
+      for (var i = 0; i < proposal.votes.length; i++) {
+        if(proposal.votes[i].user == user.id) {
+          console.log(proposal.votes[i].user)
+          return true
+        }
+      }
+      return false
+    }
+    if(!sameVote()) {
+      proposal.votes.push({
+        user: user,
+        yay: false,
+        nay: true
+      })
+    }
+
+    proposal.save(function(err, updatedProposal){
+      if(err) throw err
+      res.json(updatedProposal)
     })
   })
 }
+
 
 
 
