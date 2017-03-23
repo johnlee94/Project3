@@ -14,17 +14,15 @@ $(document).ready(function() {
   $yaybutton = $('#yay')
   $naybutton = $('#nay')
 
-  $yaybutton.on('click', function() {
-    // var proposal = $(this)
+  $yaybutton.one('click', function() {
+    var proposal = $(this).attr('class')
     // var proposalId= proposal.data('target')
     // var user = $(this)
     // var userId = user.attr('id')
     $.ajax({
       type: "PATCH",
       url: "/proposals",
-      data: {userId: '58d374a99eba99646b67afd0',
-              proposalId: '58d365caf3b6815209d8606f'
-            }
+      data: {proposalId: proposal}
     }).then(
       function(data){
         console.log(data)

@@ -49,8 +49,7 @@ function showProposal(req, res) {
 
 function createYayVote(req, res) {
   var proposalId = req.body.proposalId
-  var userId = req.body.userId
-
+  var user = req.user
   // db.collection('proposals').findById({id: proposalId)}, function(err, proposal){
   //   proposal.votes.insert({
   //     user: userId,
@@ -59,16 +58,29 @@ function createYayVote(req, res) {
   //   })
   // })
 
-  Proposal.findById(id, function(err, proposal) {
+  Proposal.findById(proposalId, function(err, proposal) {
     if (err) throw err
 
-  })
-  .populate('votes')
-  .exec(function(err, proposal) {
-    proposal.votes.insert({
-      user: userId,
-      yay: true,
-      nay: false
+    function sameVote() {
+      for (var i = 0; i < proposal.votes.length; i++) {
+        if(proposal.votes[i].user == user.id) {
+          console.log(proposal.votes[i].user)
+          return true
+        }
+      }
+      return false
+    }
+    if(!sameVote()) {
+      proposal.votes.push({
+        user: user,
+        yay: true,
+        nay: false
+      })
+    }
+
+    proposal.save(function(err, updatedProposal){
+      if(err) throw err
+      res.json(updatedProposal)
     })
   })
 }
