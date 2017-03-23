@@ -1,7 +1,11 @@
 var express = require('express'),
-    router = new Express.router()
-    //more stuff from controller here
+    router = new express.Router(),
+    {showAPI} = require('../../controllers/api')
 
 
 
-router.route('/api')
+router.route('/proposals')
+  .get(showAPI)
+
+
+module.exports = router 
