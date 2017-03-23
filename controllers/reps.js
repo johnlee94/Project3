@@ -51,7 +51,7 @@ function showRep(req, res) {
   var id = req.params.id
   rep = Rep.findById(id, function(err, rep) {
     if (err) throw err
-    res.json(rep)
+    res.render('./reps/show', {rep: rep})
   })
 }
 
