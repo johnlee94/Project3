@@ -47,6 +47,11 @@ app.use(function (req, res, next){
   next()
 })
 
+// app.use(function (req, res, next){
+//   global.user = req.rep
+//   next()
+// })
+
 //root route add later!!
 app.get('/', function(req, res) {
   res.render('home');

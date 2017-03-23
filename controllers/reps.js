@@ -51,7 +51,7 @@ function showRep(req, res) {
   var id = req.params.id
   rep = Rep.findById(id, function(err, rep) {
     if (err) throw err
-    res.json(rep)
+    res.render('./reps/show', {rep: rep})
   })
 }
 
@@ -67,15 +67,25 @@ function editRep(req, res) {
   })
 }
 
-function updateRep(req, res) {
-  var id = req.params.id
+function updateRep(request, response) {
+  var id = request.params.id
+  console.log(rep)
 
-  Rep.findById(id, function(err, rep) {
-    if (err || !rep) throw err
-    rep.save(function(err, updatedRep) {
-      if (err) throw err
+  Rep.findById({_id: id}, function(error, rep){
+    if(error) response.json({message: 'could not find rep b/c' + error})
 
-      res.json(updatedRep)
+    if(request.body.firstname) rep.firstname = request.body.firstname
+    if(request.body.lastname) rep.lastname = request.body.lastname
+    if(request.body.city) rep.city = request.body.city
+    if(request.body.state) rep.state = request.body.state
+    if(request.body.zip) rep.zip = request.body.zip
+    if(request.body.county) rep.county = request.body.county
+    if(request.body.party) rep.party = request.body.party
+    if(request.body.district) rep.district = request.body.district
+
+    rep.save(function(error){
+      if(error) response.json({message: 'could not update'})
+      response.json({message: 'rep successfully updated'})
     })
   })
 }
