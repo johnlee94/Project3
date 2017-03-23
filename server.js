@@ -56,7 +56,14 @@ app.get('/', function(req, res) {
 // var home = require('./config/routes/home')
 // app.use('/', home)
 
-
+//use app.get?
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'} ));
+app.get('/auth/facebook/callback',
+ passport.authenticate('facebook', {
+   successRedirect: '/gabs',
+   failureRedirect: '/index'
+ })
+);
 
 app.get('/logout', function(req, res) {
   req.logout();
