@@ -16,7 +16,8 @@
       <p>Created by: <%= proposal.rep.firstname %><p>
       <!-- <h3>yay: <%= proposal.votes %> </h3> -->
       <p id="counter">Xxx</p>
-      <button id="yay" class='<%= proposal._id%>'>Yay</button> | <button id='nay'>Nay</button>
+      <button id="yay" class='<%= proposal._id%>'>Yay</button> <%= proposal.votes.length %> | <button id='nay'>Nay</button>
+      <%= proposal.votes.length %>
     <% }) %>
 
 
