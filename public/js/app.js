@@ -6,6 +6,8 @@ console.log("header partial is connected")
 $(document).ready(function() {
   $yaybutton = $('#yay')
   $naybutton = $('#nay')
+  $yayCounter = $('#yayCounter')
+  $nayCounter = $('#nayCounter')
 
   $yaybutton.one('click', function() {
     var proposal = $(this).attr('class')
@@ -19,6 +21,8 @@ $(document).ready(function() {
     }).then(
       function(data){
         console.log(data)
+        $yayCounter.html(data.yayVotes)
+
       }
     )
   })
@@ -33,6 +37,10 @@ $(document).ready(function() {
     }).then(
       function(data) {
         console.log(data)
+        console.log(data.nayVotes)
+
+        $nayCounter.html(data.nayVotes)
+        console.log($nayCounter.html)
       }
     )
   })
