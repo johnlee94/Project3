@@ -46,7 +46,6 @@ app.use(function (req, res, next){
   global.user = req.user
   next()
 })
-
 // app.use(function (req, res, next){
 //   global.user = req.rep
 //   next()
