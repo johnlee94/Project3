@@ -12,6 +12,7 @@ var Proposal = require('../models/proposal'),
 function index(req, res) {
   Proposal.find({})
     .populate('rep')
+    .populate('votes')
     .exec(function(err, proposals) {
     if (err) throw err
     res.render('proposals/index.ejs', {proposals: proposals})
@@ -41,7 +42,19 @@ function showProposal(req, res) {
     res.render('proposals/show.ejs')
   });
 }
+//
+// function makeVote(req, res) {
+//   var id = req.user
+//   var yayVote =
+//   Proposal.votes.push(req.body)
+// }
 
+
+// function yayVoteCount(req, res) {
+//   var
+//   if yay === true
+//   array.push
+// }
 
 
 module.exports = {
