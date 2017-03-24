@@ -11,9 +11,7 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 - HTML / CSS / Javascript / EJS
 - 'MEN' Stack: Mongo.db, Express, Node.Js
-- Socket.io (Real-time Chat System)
 - Facebook O Authentication
-- APIs used: (TBD)
 
 **General Approach:**
 
@@ -25,6 +23,10 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 - Created ERD
 - Developed wireframes/user experience
 - Split into groups of 2 to CRUD the models as we all would like to be involved in the backend
+- set up the models,  got authentication/authorization to work
+- set up controllers and routes
+- set up front end(views, ejs, ajax, app.js)
+- connected front end with back end (voting system)
 
 
 **Installation Instructions:**
@@ -39,19 +41,19 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 2.   In your terminal run npm install to install all necessary dependency modules and packages
 
-     ```$ npm install```  
+       ```$ npm install```  
 
 3.   Host the server locally by running in the command line:
 
-     ```$ node server.js```
+       ```$ node server.js```
 
-     Or run nodemon if you have the package installed in your Node version.
+       Or run nodemon if you have the package installed in your Node version.
 
-     ```$ nodemon```
+       ```$ nodemon```
 
 4.   To run the app locally, go to your browser of choice and port to http://localhost:3000
 
-     For example: ```$ google-chrome http://localhost:3000```
+       For example: ```$ google-chrome http://localhost:3000```
 
 
 
@@ -90,6 +92,9 @@ Team Branch Squad: John Lee, Betsy Donohue, Boone Reynolds, Steven Peltzer
 
 
 
-**Unsolved Problems / Major Problems:** (TBD)
+**Unsolved Problems / Major Problems:** 
 
-​
+- Cannot differentiate between 'user' and 'rep'
+- search function is still pretty primitive
+- facebook oauth auto fills in required fields with empty strings or random number (can be edited by user in their profile but would like to pull that info during the oauth process)
+- Props don't reorder based on date
