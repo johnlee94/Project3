@@ -16,11 +16,18 @@
       <p style="font-weight: bold">Created by: <%= proposal.rep.firstname %><p>
       <!-- <h3>yay: <%= proposal.votes %> </h3> -->
 <div style="display: inline">
-      <button id='yay' class='<%= proposal._id%>' style="display: inline">Yay</button>
-        <div id='yayCounter' style="display: inline"><%= proposal.yayVotes %></div>
-
-      <button id='nay' class='<%= proposal._id + "2"%>' style="display: inline">Nay</button>
-        <div id='nayCounter' style="display: inline"><%= proposal.nayVotes %></div>
+      <% if(user) { %>
+        <button class='<%= proposal._id%> yay' style="display: inline">Yay</button>
+        <div id='yayCounter<%= proposal._id %>' style="display: inline"><%= proposal.yayVotes %></div>
+      <%  } else { %>
+        <div style="display: inline">Yays:<%= proposal.yayVotes %></div>
+      <% } %>
+      <% if (user) { %>
+      <button class='<%= proposal._id + "2"%> nay' style="display: inline">Nay</button>
+      <div id='nayCounter<%= proposal._id%>' style="display: inline"><%= proposal.nayVotes %></div>
+      <% } else { %>
+        <div style="display: inline">Nays:<%= proposal.nayVotes %></div>
+      <% } %>
 </div>
     <% }) %>
 
