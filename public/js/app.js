@@ -4,13 +4,14 @@ console.log("header partial is connected")
 
 
 $(document).ready(function() {
-  $yaybutton = $('#yay')
-  $naybutton = $('#nay')
+  $yaybutton = $('.yay')
+  $naybutton = $('.nay')
   $yayCounter = $('#yayCounter')
   $nayCounter = $('#nayCounter')
 
   $yaybutton.one('click', function() {
-    var proposal = $(this).attr('class')
+    var proposal = $(this).attr('class').slice(0, -4)
+    console.log(proposal)
     // var proposalId= proposal.data('target')
     // var user = $(this)
     // var userId = user.attr('id')
@@ -21,7 +22,8 @@ $(document).ready(function() {
     }).then(
       function(data){
         console.log(data)
-        $yayCounter.html(data.yayVotes)
+        $(`#yayCounter${data._id}`).html(data.yayVotes)
+        console.log($(`#yayCounter${data._id}`))
 
       }
     )
@@ -29,7 +31,8 @@ $(document).ready(function() {
 
   $naybutton.on('click', function() {
     var unchompedProposal = $(this).attr('class')
-    var proposal = unchompedProposal.slice(0, -1)
+    var proposal = unchompedProposal.slice(0, -5)
+    console.log(proposal)
     $.ajax({
       type: "PATCH",
       url: "/proposals/bad",
@@ -39,8 +42,8 @@ $(document).ready(function() {
         console.log(data)
         console.log(data.nayVotes)
 
-        $nayCounter.html(data.nayVotes)
-        console.log($nayCounter.html)
+        $(`#nayCounter${data._id}`).html(data.nayVotes)
+        console.log($(`#nayCounter${data._id}`))
       }
     )
   })
