@@ -11,15 +11,16 @@
             <a class="navbar-brand" href="/">vTownHall</a>
         </div>
         <form class="navbar-form navbar-left" id="search" role="search" method="POST" action="/proposals/search">
-        <div class="form-group">
-          <input type="text" class="form-control" name="keyword" placeholder="Search for Proposals">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+            <div class="form-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Search for Proposals">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/proposals">Proposals</a></li>
                 <% if (user) { %>
                     <li><a href="/logout">Logout</a></li>
                     <li class="dropdown">
@@ -30,20 +31,20 @@
                         </ul>
                     </li>
                     <% } else { %>
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="/users/login">User Login</a></li>
-                            <li><a href="/reps/login">Rep Login</a></li>
-                          </ul>
-                      </li>
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign Up <span class="caret"></span></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="/users/signup">User Signup</a></li>
-                            <li><a href="/reps/signup">Rep Signup</a></li>
-                          </ul>
-                      </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/users/login">User Login</a></li>
+                                <li><a href="/reps/login">Rep Login</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign Up <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/users/signup">User Signup</a></li>
+                                <li><a href="/reps/signup">Rep Signup</a></li>
+                            </ul>
+                        </li>
                         <% } %>
             </ul>
         </div>
