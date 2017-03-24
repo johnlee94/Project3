@@ -44,7 +44,7 @@ function showProposal(req, res) {
   proposal = Proposal.findById(id, function(err, proposal){
     if (err) throw err
   })
-  .populate()
+  .populate('rep')
   .exec(function (err, proposal) {
     if (err) throw err
     res.render('proposals/show.ejs', {proposal: proposal})
