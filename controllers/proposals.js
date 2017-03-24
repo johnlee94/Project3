@@ -28,6 +28,7 @@ function newProposal(req, res) {
 function createProposal(req, res) {
     var newProposal = new Proposal(req.body)
     newProposal.rep = req.user
+    newProposal.loweredTitle = newProposal.title.toLowerCase()
     newProposal.save(function(err, savedProposal) {
       if (err) throw err
       // index()
@@ -122,13 +123,15 @@ function createNayVote(req, res) {
 }
 
 function searchProposals(req, res) {
-  var proposal = req.body.keyword
-  Proposal.find({title: proposal}, function(err, proposal) {
+  var search = req.body.keyword.toLowerCase()
+  console.log(search)
+  Proposal.find({loweredTitle: search}, function(err, proposal) {
     if (err) throw err
-    if (!proposal.length) {
-      res.redirect('/proposals')
-    } else {
+    console.log(proposal)
+    if (proposal.length) {
       res.redirect('/proposals/' + proposal[0]._id)
+    } else {
+      res.redirect('/proposals')
     }
   })
   .catch(function (err) {
