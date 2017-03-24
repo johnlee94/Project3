@@ -95,7 +95,7 @@ function destroyRep (req, res) {
 
   Rep.remove ({_id: id}, function (err) {
     if (err) throw err
-    res.json({message: 'Rep successfuly deleted!'})
+    res.render("home")
   })
 }
 
