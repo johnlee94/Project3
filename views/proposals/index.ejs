@@ -11,7 +11,7 @@
     <h2 style="font-weight: bold">All Proposals</h2>
     <% proposals.forEach(function(proposal) { %>
 
-      <h3 style="font-weight: bold"><%= proposal.title %></h3>
+      <h3 style="font-weight: bold"><a href="/proposals/<%= proposal._id %>"><%= proposal.title %></a></h3>
       <p style="word-break: break-all"><%= proposal.content %></p>
       <p style="font-weight: bold">Created by: <%= proposal.rep.firstname %> <%= proposal.rep.lastname %><p>
       <!-- <h3>yay: <%= proposal.votes %> </h3> -->
