@@ -8,16 +8,36 @@
   </head>
   <body>
     <!-- display rep info -->
+
     <div>
-          Hello <%= rep.firstname %>, this is your profile page <br> (this page is not visible to anyone but you)
+          Hello <strong><%= rep.firstname %></strong>,
+          <br>
+          <br>
+          This is your profile page (this page is not visible to anyone but you).
     </div>
+    <br>
     <div>
       <ul>
-        <br><li>
-          <%= rep.party %>
+        <li>
+            <strong>First Name: </strong> <%= rep.firstname %>
         </li>
         <li>
-          <%= rep.zip %>
+            <strong>Last Name: </strong> <%= rep.lastname %>
+        </li>
+        <li>
+            <strong>Party: </strong> <%= rep.party %>
+        </li>
+        <li>
+            <strong>State: </strong> <%= rep.state %>
+        </li>
+        <li>
+            <strong>County: </strong> <%= rep.county %>
+        </li>
+        <li>
+            <strong>Zip Code: </strong> <%= rep.zip %>
+        </li>
+        <li>
+            <strong>District: </strong> <%= rep.district %>
         </li>
       </ul>
     </div>

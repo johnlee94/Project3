@@ -11,7 +11,10 @@
   <div>
     <% if (user) { %>
         Hello
-        <strong><%= user.username %></strong>, this is your profile page <br> (this page is not visible to anyone but you)
+        <strong><%= user.username %></strong>,
+        <br>
+        <br>
+        This is your profile page (this page is not visible to anyone but you).
   </div>
   <div>
     <ul>
@@ -21,7 +24,7 @@
       </li>
       <br>
       <li>
-          <strong>Part: </strong><%= user.party %>
+          <strong>Party: </strong><%= user.party %>
       </li>
       <br>
       <li>
@@ -32,9 +35,9 @@
           <strong>State: </strong><%= user.state %>
       </li>
       <br>
-      <li>
+      <!-- <li>
           <strong>Your reps are: </strong>
-      </li>
+      </li> -->
     </ul>
   </div>
   <div>
