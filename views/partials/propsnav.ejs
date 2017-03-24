@@ -16,21 +16,28 @@
             <ul class="nav navbar-nav navbar-right">
                 <% if (user) { %>
                     <li><a href="/logout">Logout</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View Profile <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/reps/<%= user.id %>">View Reps Profile</a></li>
+                            <li><a href="/users/<%= user.id %>">View Users Profile</a></li>
+                        </ul>
+                    </li>
                     <% } else { %>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/users/login">User Login</a></li>
-                                <li><a href="/reps/login">Rep Login</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign Up <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/users/signup">User Signup</a></li>
-                                <li><a href="/reps/signup">Rep Signup</a></li>
-                            </ul>
-                        </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="/users/login">User Login</a></li>
+                            <li><a href="/reps/login">Rep Login</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign Up <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="/users/signup">User Signup</a></li>
+                            <li><a href="/reps/signup">Rep Signup</a></li>
+                          </ul>
+                      </li>
                         <% } %>
             </ul>
         </div>
