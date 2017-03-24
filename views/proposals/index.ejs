@@ -8,16 +8,20 @@
     <title></title>
   </head>
   <body>
-    <h2>All Proposals</h2>
+    <h2 style="font-weight: bold">All Proposals</h2>
     <% proposals.forEach(function(proposal) { %>
 
-      <h3><%= proposal.title %></h3>
-      <p><%= proposal.content %></p>
-      <p>Created by: <%= proposal.rep.firstname %><p>
+      <h3 style="font-weight: bold"><%= proposal.title %></h3>
+      <p style="word-break: break-all"><%= proposal.content %></p>
+      <p style="font-weight: bold">Created by: <%= proposal.rep.firstname %><p>
       <!-- <h3>yay: <%= proposal.votes %> </h3> -->
-      <p id="counter">Xxx</p>
-      <button id="yay" class='<%= proposal._id%>'>Yay</button> <div id='yayCounter'><%= proposal.yayVotes %></div> | <button id='nay' class='<%= proposal._id + "2"%>'>Nay</button>
-      <div id='nayCounter'><%= proposal.nayVotes %></div>
+<div style="display: inline">
+      <button id='yay' class='<%= proposal._id%>' style="display: inline">Yay</button>
+        <div id='yayCounter' style="display: inline"><%= proposal.yayVotes %></div>
+
+      <button id='nay' class='<%= proposal._id + "2"%>' style="display: inline">Nay</button>
+        <div id='nayCounter' style="display: inline"><%= proposal.nayVotes %></div>
+</div>
     <% }) %>
 
 
