@@ -4,6 +4,7 @@ var mongoose = require('mongoose')
 var proposalSchema = new mongoose.Schema({
   rep: {type: mongoose.Schema.Types.ObjectId, ref: 'Rep' },
   title: {type: String, required: true},
+  loweredTitle: String,
   content: {type: String, required: true},
   votes: [
     {
