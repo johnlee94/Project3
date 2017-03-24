@@ -7,19 +7,23 @@
     <title></title>
   </head>
   <body>
-    <div>
-      <h1>Proposal Title</h1>
-      <p>Proposal Body</p>
-      <h5>Reps Name</h5>
-      <h5>District</h5>
-        <div>
-          <p>Yeays</p>
-        </div>
-        <div>
-          <p>Nays</p>
-        </div>
-      <h5>Posted At:...</h5>
-
+      <h3 style="font-weight: bold"><%= proposal.title %></h3>
+      <p style="word-break: break-all"><%= proposal.content %></p>
+      <p style="font-weight: bold">Created by: <%= proposal.rep.firstname %> <%= proposal.rep.lastname %><p>
+      <!-- <h3>yay: <%= proposal.votes %> </h3> -->
+    <div style="display: inline">
+      <% if(user) { %>
+        <button class='<%= proposal._id%> yay' style="display: inline">Yay</button>
+        <div id='yayCounter<%= proposal._id %>' style="display: inline"> <%= proposal.yayVotes %> </div>
+      <%  } else { %>
+        <div style="display: inline">Yays: <%= proposal.yayVotes %> </div>
+      <% } %>
+      <% if (user) { %>
+      <button class='<%= proposal._id + "2"%> nay' style="display: inline">Nay</button>
+      <div id='nayCounter<%= proposal._id%>' style="display: inline"> <%= proposal.nayVotes %> </div>
+      <% } else { %>
+        <div style="display: inline">Nays: <%= proposal.nayVotes %> </div>
+      <% } %>
     </div>
   </body>
 </html>
