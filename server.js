@@ -88,7 +88,7 @@ app.use('/reps', repRoutes)
 
 app.use('/proposals', proposalRoutes)
 
-// API router 
+// API router
 app.use('/api', apiRoutes)
 
 

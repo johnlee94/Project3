@@ -121,7 +121,20 @@ function createNayVote(req, res) {
   })
 }
 
-
+function searchProposals(req, res) {
+  var proposal = req.body.keyword
+  Proposal.find({title: proposal}, function(err, proposal) {
+    if (err) throw err
+    if (!proposal.length) {
+      res.redirect('/proposals')
+    } else {
+      res.redirect('/proposals/' + proposal[0]._id)
+    }
+  })
+  .catch(function (err) {
+    console.error(err)
+  })
+}
 
 
 
@@ -138,5 +151,6 @@ module.exports = {
   createProposal: createProposal,
   showProposal: showProposal,
   createYayVote: createYayVote,
-  createNayVote: createNayVote
+  createNayVote: createNayVote,
+  searchProposals: searchProposals
 }
