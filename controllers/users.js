@@ -104,7 +104,7 @@ function updateUser(req, res) {
 
     user.save(function(error){
       if(error) res.json({message: 'could not update'})
-      res.json({message: 'user successfully updated'})
+      res.render('users/show')
     })
   })
 }

@@ -85,7 +85,7 @@ function updateRep(request, response) {
 
     rep.save(function(error){
       if(error) response.json({message: 'could not update'})
-      response.json({message: 'rep successfully updated'})
+      response.render('reps/show')
     })
   })
 }
